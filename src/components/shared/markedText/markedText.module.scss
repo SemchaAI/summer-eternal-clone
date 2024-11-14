@@ -1,0 +1,7 @@
+.manifestoMark {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.9) 50%, transparent 50%)
+    110% 0 / 200% 100% no-repeat;
+  background-position: calc((1 - var(--highlighted)) * 110%) 0;
+  transition: background-position 1s;
+  color: #b60a1c;
+}

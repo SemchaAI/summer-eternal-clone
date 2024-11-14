@@ -1,0 +1,223 @@
+@use '@/app/assets/mixins' as mix;
+
+.headerContainer {
+  position: fixed;
+  top: 0;
+
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 0px;
+
+  width: 100%;
+  // transform: none;
+  // transform-origin: 50% 50% 0px;
+
+  z-index: var(--z-header);
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  //experimental start
+  left: 0;
+  top: 0;
+  position: absolute;
+
+  z-index: var(--z-nav);
+  //experimental end
+
+  display: flex;
+  gap: 25px;
+  padding: 19px 0 10px 20px;
+  @include mix.body30Typo;
+}
+.logoVertical {
+}
+.logoHorizontal {
+  display: flex;
+}
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+.link {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+//HAMBURGER START
+.container {
+  height: min-content;
+  z-index: var(--z-header);
+}
+.btn {
+  height: min-content;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  padding: 20px;
+  @include mix.btnTypo;
+  //@include mix.transition;
+  &.openBtn {
+    color: var(--text-secondary);
+  }
+}
+
+.hamburger {
+  --hamburger-h: 9px;
+  --hamburger-w: 11px;
+
+  height: var(--hamburger-h);
+  width: var(--hamburger-w);
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+
+  overflow: hidden;
+}
+.line {
+  height: var(--hamburger-h);
+  width: 1px;
+  position: absolute;
+
+  //experimental
+  will-change: transform;
+  transform: none;
+  transform-origin: 50% 50% 0px;
+  background-color: var(--background-third);
+
+  @include mix.transition;
+
+  &:nth-child(1) {
+    left: 0;
+    top: 0;
+  }
+  &:nth-child(2) {
+    top: 0;
+    left: 5px;
+  }
+  &:nth-child(3) {
+    right: 0;
+    top: 0;
+  }
+  &.activeLine {
+    &:nth-child(1) {
+      transform: rotate(45deg);
+      right: 4px;
+      left: 6px;
+    }
+    &:nth-child(2) {
+      display: none;
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+      right: 4px;
+      left: 6px;
+    }
+    background-color: var(--background-main);
+  }
+}
+.btnText {
+  width: 37px;
+  height: 12px;
+  overflow: hidden;
+}
+//HAMBURGER END
+
+.headerLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+
+  width: 100%;
+  height: 9%;
+
+  // transform: none;
+  // transform-origin: 50% 50% 0px;
+
+  @include mix.transition;
+
+  background-color: var(--background-third);
+}
+
+//NAVIGATION START
+.nav {
+  --flex-direction: row;
+
+  display: flex;
+  flex-direction: var(--flex-direction);
+  flex-wrap: nowrap;
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  top: -1px;
+
+  width: 100%;
+  height: 1px;
+
+  cursor: unset;
+  overflow: hidden;
+
+  transform: none;
+  transform-origin: 50% 50% 0px;
+
+  @include mix.transition;
+
+  background-color: var(--background-third);
+
+  z-index: var(--z-nav);
+}
+.openNav {
+  top: 0px;
+  height: 100dvh;
+}
+.navLink {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0px;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @include mix.body30Typo;
+  @include mix.transition;
+  color: var(--text-secondary);
+
+  &:hover,
+  &:focus {
+    color: var(--text-third);
+  }
+}
+//NAVIGATION END
+
+@media (max-width: 809px) {
+  //NAVIGATION START
+  .nav {
+    justify-content: center;
+    --flex-direction: column;
+  }
+  .navLink {
+    flex: 0;
+    @include mix.body18Typo;
+  }
+  //NAVIGATION END
+}

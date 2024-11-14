@@ -1,0 +1,65 @@
+@use '@/app/assets/mixins' as mix;
+
+.footer {
+  width: 100%;
+  height: min-content;
+  padding: 70px 20px 14px 20px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+
+  overflow: hidden;
+}
+.footerPart {
+  position: relative;
+
+  height: min-content;
+  // width: 1px;
+  padding: 0;
+
+  display: flex;
+  flex: 1 0 0px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  overflow: hidden;
+
+  &:last-child {
+    flex: none;
+  }
+}
+
+.footerLine {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.copyrightContainer {
+  display: flex;
+  flex-direction: column;
+}
+.footerText {
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  @include mix.body12Typo;
+}
+
+@media screen and (max-width: 809px) {
+  .footer {
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 20px 9px;
+  }
+  .footerPart {
+    flex: none;
+  }
+  .footerLine {
+    justify-content: flex-start;
+  }
+}

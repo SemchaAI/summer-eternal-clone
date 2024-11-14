@@ -1,0 +1,33 @@
+@use '@/app/assets/mixins' as mix;
+
+.swapContainer {
+  position: relative;
+
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 4px;
+  height: 15px;
+
+  overflow: hidden;
+
+  &:hover .swapLine {
+    transform: translateY(-100%);
+  }
+}
+.swapLine {
+  position: relative;
+  flex: none;
+  height: auto;
+
+  white-space: pre;
+  width: auto;
+  @include mix.transition;
+}
+.swapLineText {
+  display: flex;
+  @include mix.body12Typo;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  text-decoration: none;
+}

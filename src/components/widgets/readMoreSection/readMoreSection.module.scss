@@ -1,0 +1,136 @@
+@use '@/app/assets/mixins' as mix;
+
+.readMoreSection {
+  width: 100%;
+  height: min-content;
+  padding: 70px 0;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 15px;
+
+  justify-content: center;
+  align-items: center;
+  // overflow: visible;
+}
+.link {
+  position: relative;
+  max-width: 1100px;
+  width: 95%;
+  padding: 0 0 30px;
+
+  display: flex;
+  justify-content: center;
+
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.tag {
+  position: absolute;
+  top: -37px;
+  left: 0;
+
+  white-space: pre;
+  text-transform: uppercase;
+
+  @include mix.body28Typo;
+}
+.linkContainer {
+  width: 100%;
+  padding: 15px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 22px;
+
+  border: 1px solid var(--background-third);
+}
+.linkImgContainer {
+  flex: none;
+  height: 193px;
+  width: 155px;
+  position: relative;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+.linkImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-position: center center;
+  object-fit: cover;
+}
+.linkDescription {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+  overflow: hidden;
+}
+.linkText {
+  text-transform: uppercase;
+  @include mix.body22Typo;
+}
+.linkTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-family: var(--font-libre);
+  @include mix.body49Typo;
+}
+.linkTextDescription {
+  margin: 15px 0;
+  max-height: 3lh;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
+  font-family: var(--font-libre);
+  @include mix.body19Typo;
+}
+
+@media screen and (max-width: 1199px) {
+  .linkText {
+    font-size: 20px;
+  }
+  .linkTitle {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .linkText {
+    font-size: 18px;
+  }
+  .linkTitle {
+    font-size: 34px;
+  }
+  .linkTextDescription {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 809px) {
+  .linkContainer {
+    flex-direction: column;
+  }
+  .linkImgContainer {
+    height: 145px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .linkTitle {
+    font-size: 25px;
+  }
+  .linkTextDescription {
+    font-size: 14px;
+  }
+}

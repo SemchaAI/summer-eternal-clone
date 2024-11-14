@@ -1,0 +1,160 @@
+@use '@/app/assets/mixins' as mix;
+
+.chartSection {
+  padding: 200px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.header {
+  // display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+}
+.ownTitle {
+  text-align: center;
+  font-size: 230px;
+}
+
+.sectionContent {
+  max-width: 999px;
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.sectionDescription {
+  max-width: 776px;
+  text-align: center;
+
+  font-family: var(--font-libre);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.17em;
+  letter-spacing: -0.01em;
+}
+
+.chartContainer {
+  display: flex;
+  width: 100%;
+  gap: 54px;
+  justify-content: center;
+  overflow: hidden;
+}
+.diagramContainer {
+  display: flex;
+
+  width: 416px;
+  height: 416px;
+  aspect-ratio: 1/1;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  flex: 1 0 0;
+
+  overflow: hidden;
+}
+.title {
+  @include mix.body26Typo;
+  text-transform: uppercase;
+
+  color: var(--text-active);
+}
+.description {
+  flex: none;
+
+  display: flex;
+  width: 100%;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  font-family: var(--font-libre);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.12em;
+  letter-spacing: 0em;
+}
+.descriptionText {
+  width: 100%;
+  span,
+  strong {
+    color: var(--text-active);
+  }
+}
+
+@media screen and (max-width: 1599px) {
+  .ownTitle {
+    font-size: 170px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .ownTitle {
+    font-size: 115px;
+  }
+  .sectionContent {
+    max-width: 100%;
+  }
+  .sectionDescription {
+    max-width: 80%;
+  }
+  .chartContainer {
+    max-width: 900px;
+  }
+  .description {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 999px) {
+  .ownTitle {
+    font-size: 51px;
+  }
+  .sectionDescription {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .chartContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .textContainer {
+    padding: 0 5%;
+    flex: none;
+    height: 396px; //396px
+    width: 100%;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sectionDescription {
+    font-size: 16px;
+  }
+  .chartContainer {
+    gap: 20px;
+  }
+  .diagramContainer {
+    width: 366px;
+    height: 366px;
+  }
+  .title {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .sectionDescription {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+}

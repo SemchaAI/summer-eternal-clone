@@ -1,0 +1,23 @@
+@use '@/app/assets/mixins' as mix;
+
+.manifestoText {
+  --highlighted: 0;
+  text-align: center;
+  white-space: pre-wrap;
+  @include mix.body30Typo;
+}
+@media screen and (max-width: 1599px) {
+  .manifestoText {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .manifestoText {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 809px) {
+  .manifestoText {
+    font-size: 20px;
+  }
+}

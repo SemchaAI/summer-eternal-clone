@@ -1,0 +1,141 @@
+@use '@/app/assets/mixins' as mix;
+
+.manifestoSection {
+  width: 100%;
+  height: min-content;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  padding: 250px 0 20px;
+}
+.manifestoHeader {
+  width: 100%;
+  height: min-content;
+
+  padding: 0;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+  // overflow: hidden;
+}
+.manifestoBlock {
+  width: 100%;
+  height: 100%;
+
+  position: sticky;
+  top: 230px;
+
+  // display: flex;
+  // gap: 13px;
+  // flex-direction: column;
+  // flex-wrap: nowrap;
+  // align-items: center;
+  // justify-content: center;
+}
+// .manifestoTag {
+//   display: flex;
+//   gap: 20px;
+
+//   position: absolute;
+//   left: 20px;
+//   top: 5px;
+// }
+// .tag {
+//   white-space: pre;
+//   text-transform: uppercase;
+//   @include mix.body12Typo;
+// }
+// .manifestoTitle {
+//   @include mix.headline270Typo;
+// }
+
+.manifestoLogo {
+  position: relative;
+  width: min(100vw, 900px);
+  height: min-content;
+
+  z-index: 2;
+}
+.manifestoImg {
+  display: block;
+  width: 100%; /* Let the image scale with the container */
+  max-width: 100vw; /* Restrict to viewport width */
+  height: auto; /* Maintain aspect ratio */
+}
+.manifestoContent {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  padding: 60px 20px 166px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 43px;
+}
+.manifestoLink {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  gap: 5px;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  @include mix.medium18Typo;
+
+  color: var(--text-secondary);
+  background-color: var(--background-third);
+  @include mix.transition;
+
+  will-change: transform;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    color: var(--text-active);
+  }
+}
+
+.manifestoTitle {
+  @include mix.headline270Typo;
+}
+
+@media screen and (max-width: 1599px) {
+  .manifestoTitle {
+    font-size: 200px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .manifestoTitle {
+    font-size: 120px;
+  }
+}
+@media screen and (max-width: 809px) {
+  .manifestoTitle {
+    font-size: 60px;
+  }
+  .manifestoContent {
+    max-width: 600px;
+    width: 100%;
+
+    gap: 43px;
+  }
+  .manifestoLink {
+    font-size: 14px;
+  }
+}

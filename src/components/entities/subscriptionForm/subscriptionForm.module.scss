@@ -1,0 +1,133 @@
+@use '@/app/assets/mixins' as mix;
+
+.formContainer {
+  width: 120%;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--background-third);
+}
+.form {
+  padding: 24px 0;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 9px;
+
+  overflow: hidden;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.inputContainer {
+  margin-top: 16px;
+  display: flex;
+  gap: 4px;
+}
+.input {
+  cursor: unset;
+  min-width: 200px;
+  padding: 6px 12px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+
+  background: var(--background-main);
+
+  @include mix.transition;
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--custom-bg-secondary) inset;
+    -webkit-text-fill-color: var(--text-primary);
+  }
+
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px var(--custom-bg-secondary) inset;
+    -webkit-text-fill-color: var(--text-primary);
+  }
+}
+.button {
+  padding: 6px 12px;
+  border-radius: 4px;
+
+  text-transform: uppercase;
+  @include mix.body12BtnTypo;
+
+  background-color: var(--text-third);
+  @include mix.transition;
+  &:hover {
+    background-color: var(--background-active);
+    color: var(--text-active);
+  }
+}
+.error {
+  display: flex;
+  width: 100%;
+  height: 15px;
+
+  @include mix.body12Typo;
+  color: var(--text-active);
+}
+.description {
+  max-width: 680px;
+  position: relative;
+
+  text-align: center;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  @include mix.body23Typo;
+  color: var(--text-third);
+}
+.privacy {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  //gap: 4px;
+
+  @include mix.body19Typo;
+  color: var(--text-third);
+}
+.privacyLink {
+  margin-left: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 809px) {
+  .privacy {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .privacy {
+    font-size: 12px;
+  }
+}

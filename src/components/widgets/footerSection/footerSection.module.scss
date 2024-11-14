@@ -1,0 +1,180 @@
+@use '@/app/assets/mixins' as mix;
+
+.footerSection {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  overflow: hidden;
+
+  background-color: var(--background-secondary);
+}
+.footerTitlesContainer {
+  width: 100%;
+  height: min-content;
+  max-width: 1200px;
+  padding: 238px 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 1lh;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  text-transform: uppercase;
+  font-family: var(--font-libre);
+  font-size: 89px;
+  font-weight: 400;
+  line-height: 0.94em;
+  letter-spacing: -0.02em;
+
+  color: var(--text-secondary);
+}
+.title {
+  width: 89%;
+  font: inherit;
+}
+
+//SOCIALS START
+
+.socialsContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 20px;
+}
+.socialsLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  color: var(--background-main);
+}
+//SOCIALS END
+
+//WAITLIST START
+.waitlistContainer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  will-change: transform;
+  transform: perspective(1200px);
+
+  @include mix.transition;
+
+  &:global:hover {
+    animation: bounce 0.5s ease-in-out;
+  }
+}
+.waitlistLink {
+  width: 100%;
+  padding: 30px 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  @include mix.transition;
+}
+.waitlistTitle {
+  text-align: center;
+
+  @include mix.headline270Typo;
+  color: var(--text-secondary);
+}
+
+//WAITLIST END
+
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  .footerTitlesContainer {
+    max-width: 1000px;
+  }
+}
+@media screen and (max-width: 1599px) {
+  //SOCIALS START
+  .icon {
+    width: 80px;
+  }
+  //SOCIALS END
+
+  //WAITLIST START
+  .waitlistTitle {
+    font-size: 200px;
+  }
+
+  //WAITLIST END
+}
+
+@media screen and (max-width: 1199px) {
+  .footerTitlesContainer {
+    // max-width: 1000px;
+    padding: 121px 20px;
+
+    font-size: 64px;
+  }
+  .title {
+    max-width: 900px;
+    width: 85%;
+  }
+
+  //SOCIALS START
+  .socialsContainer {
+    width: 70%;
+  }
+  .icon {
+    width: 54px;
+  }
+  //SOCIALS END
+
+  //WAITLIST START
+  .waitlistTitle {
+    font-size: 120px;
+  }
+
+  //WAITLIST END
+}
+@media screen and (max-width: 809px) {
+  .footerTitlesContainer {
+    padding: 150px 10px;
+
+    font-size: 47px;
+    letter-spacing: -0.025em;
+    line-height: 1.02em;
+  }
+  .title {
+    max-width: unset;
+    width: 89%;
+  }
+
+  //SOCIALS START
+  .socialsContainer {
+    padding: 0 10px;
+    width: 90%;
+  }
+  .icon {
+    width: 35px;
+  }
+  //SOCIALS END
+
+  //WAITLIST START
+  .waitlistTitle {
+    font-size: 60px;
+  }
+
+  //WAITLIST END
+}

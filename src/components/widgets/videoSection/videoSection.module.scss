@@ -1,0 +1,115 @@
+@use '@/app/assets/mixins' as mix;
+
+.videoSection {
+  padding: 0 0 150px;
+  width: 100%;
+  height: 200dvh; // Makes page scrollable to trigger the video scaling
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.videoContainer,
+.stickyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background: var(--background-main);
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.video {
+  will-change: transform;
+
+  cursor: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 50%;
+  mix-blend-mode: multiply;
+
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.textContainer {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 39px;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  white-space: pre;
+}
+
+.textLeft {
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  will-change: transform;
+  opacity: 1;
+  transform: perspective(1200px);
+  height: auto;
+  position: relative;
+  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.textRight {
+  align-items: center;
+
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  gap: 10px;
+  height: min-content;
+  justify-content: center;
+  overflow: visible;
+  padding: 7px 10px;
+  position: relative;
+  width: min-content;
+
+  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  background-color: var(--background-third);
+  color: var(--text-secondary);
+}
+
+.title {
+  @include mix.medium30Typo;
+}
+
+@media (max-width: 809px) {
+  .textContainer {
+    flex-direction: column;
+    gap: 22px;
+  }
+}

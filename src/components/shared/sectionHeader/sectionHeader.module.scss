@@ -1,0 +1,34 @@
+@use '@/app/assets/mixins' as mix;
+
+.header {
+  display: flex;
+  gap: 13px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.tagContainer {
+  display: flex;
+  gap: 20px;
+
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+.tag {
+  white-space: pre;
+  text-transform: uppercase;
+  @include mix.body12Typo;
+}
+.title {
+  @include mix.headline270Typo;
+}
+
+@media screen and (max-width: 809px) {
+  .tagContainer {
+    position: relative;
+    left: unset;
+    top: unset;
+  }
+}
