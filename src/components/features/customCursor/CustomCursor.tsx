@@ -6,6 +6,9 @@ import { useCursor } from '@/utils/hooks';
 import { MoveRight } from 'lucide-react';
 
 export const CustomCursor = () => {
+  const isTouchScreen =
+    'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   const { position, cursorStyle, setPosition, setCursorStyle } = useCursor();
 
   const handleMouseMove = useCallback(
@@ -44,6 +47,7 @@ export const CustomCursor = () => {
   }, [setCursorStyle]);
 
   useEffect(() => {
+    if (isTouchScreen) return;
     document.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
@@ -71,6 +75,7 @@ export const CustomCursor = () => {
     handleMouseUp,
     handleMouseEnter,
     handleMouseLeave,
+    isTouchScreen,
   ]);
 
   return (
@@ -93,21 +98,3 @@ export const CustomCursor = () => {
     </div>
   );
 };
-
-// const handleMouseDown = useCallback(
-//   (e: MouseEvent) => {
-//     const target = e.target as HTMLElement;
-//     const colorClass = target.closest('.red') ? 'redCursor' : '';
-//     setCursorStyle({
-//       colorClass: colorClass
-//         ? cursorStyle.colorClass
-//           ? ''
-//           : colorClass
-//         : '',
-//       baseClass: 'click',
-//     });
-
-//     setTimeout(() => setCursorStyle({ baseClass: 'click-release' }), 300);
-//   },
-//   [setCursorStyle, cursorStyle.colorClass]
-// );
