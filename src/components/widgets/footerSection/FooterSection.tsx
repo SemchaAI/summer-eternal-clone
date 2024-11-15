@@ -18,21 +18,23 @@ export const FooterSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (entry) {
-        // console.log(' entry.intersectionRatio', entry.intersectionRatio);
-        const elementWidth = entry.boundingClientRect.width;
-        const currentTranslate =
-          elementWidth - entry.intersectionRatio * elementWidth;
-        setTranslateX(currentTranslate);
-      }
+      if (!entry) return;
+
+      //console.log(' entry.intersectionRatio', entry.intersectionRatio);
+      const elementWidth = entry.boundingClientRect.width;
+      const currentTranslate =
+        elementWidth - entry.intersectionRatio * elementWidth;
+      setTranslateX(currentTranslate);
     };
 
     const optimizedScroll = () => {
       requestAnimationFrame(handleScroll);
     };
 
-    if (inView) {
+    if (inView && entry) {
       window.addEventListener('scroll', optimizedScroll);
+    } else {
+      setTranslateX(0);
     }
 
     return () => window.removeEventListener('scroll', optimizedScroll);
