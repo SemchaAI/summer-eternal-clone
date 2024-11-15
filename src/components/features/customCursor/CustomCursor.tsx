@@ -78,6 +78,7 @@ export const CustomCursor = () => {
     isTouchScreen,
   ]);
 
+  if (isTouchScreen) return null;
   return (
     <div
       id="cursor"
