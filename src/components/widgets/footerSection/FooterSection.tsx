@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 
 export const FooterSection = () => {
-  const [translateX, setTranslateX] = useState(0);
+  const [translateX, setTranslateX] = useState(window.innerWidth);
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
@@ -19,7 +19,7 @@ export const FooterSection = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (entry) {
-        console.log(' entry.intersectionRatio', entry.intersectionRatio);
+        // console.log(' entry.intersectionRatio', entry.intersectionRatio);
         const elementWidth = entry.boundingClientRect.width;
         const currentTranslate =
           elementWidth - entry.intersectionRatio * elementWidth;
