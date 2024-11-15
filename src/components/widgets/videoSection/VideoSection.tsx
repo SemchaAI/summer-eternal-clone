@@ -11,25 +11,24 @@ export const VideoSection = () => {
     threshold: 0,
   });
 
-  const wdth = useRef(window.innerWidth);
-  const [scale, setScale] = useState(0.62); // Initial scale set to 0.62
-  const [translate, setTranslate] = useState(wdth.current / 2 - 54); // 252px is text width, 25%
+  const [scale, setScale] = useState(0.62);
+  const [translate, setTranslate] = useState(900);
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scaleMin = 0.62;
-      const scaleMax = 1;
+    const translateMax = 900; // in px
+    const scaleMin = 0.62;
+    const scaleMax = 1;
+    const steps = 5;
+    const scrollRange = steps * 100;
 
-      const newScale = Math.max(
-        scaleMin,
-        Math.min(scaleMax, scaleMin + scrollY / 1000)
-      );
-      const translateMin = 0;
-      const translateMax = wdth.current / 2 - 54;
-      const newTranslate = Math.max(
-        translateMin,
-        translateMax - scrollY * 1.667 //number of steps 1.667 for 6 steps
-      );
+    const handleScroll = () => {
+      const scrollY = Math.min(window.scrollY, scrollRange);
+
+      const newScale =
+        scaleMin + ((scaleMax - scaleMin) * scrollY) / scrollRange;
+
+      // Calculate translate proportionally
+      const newTranslate =
+        translateMax - (translateMax * scrollY) / scrollRange;
 
       setScale(newScale);
       setTranslate(newTranslate);
