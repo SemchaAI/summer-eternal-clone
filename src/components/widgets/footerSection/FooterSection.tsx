@@ -12,12 +12,11 @@ import { useDebounce } from '@/utils/hooks';
 
 export const FooterSection = () => {
   const [translateX, setTranslateX] = useState(window.innerWidth);
-  const { ref, inView, entry } = useInView({
+  const { ref, entry } = useInView({
     /* Optional options */
     threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
   });
   const handleScroll = () => {
-    console.log('handleScroll', inView);
     if (!entry) return;
 
     const elementWidth = entry.boundingClientRect.width;
