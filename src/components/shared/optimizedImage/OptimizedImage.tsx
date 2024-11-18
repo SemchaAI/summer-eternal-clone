@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
@@ -7,6 +7,14 @@ interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   avifSrc?: boolean;
   className?: string;
 }
+export const checkImageExists = async (url: string): Promise<boolean> => {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
+  } catch {
+    return false;
+  }
+};
 
 export const OptimizedImage = ({
   alt,
@@ -16,19 +24,14 @@ export const OptimizedImage = ({
   className,
   ...props
 }: IProps) => {
-  const [fallbackSrc] = useState(`${imgSrc}-1024.png`);
+  const [fallbackSrc] = useState(`${imgSrc}.png`);
   const [srcSet, setSrcSet] = useState({
-    png: `${imgSrc}-512.png 512w, ${imgSrc}-1024.png 1024w, ${imgSrc}.png 2001w`,
-    webp: `${imgSrc}-512.webp 512w, ${imgSrc}-1024.webp 1024w, ${imgSrc}.webp 2001w`,
-    avif: `${imgSrc}-512.avif 512w, ${imgSrc}-1024.avif 1024w, ${imgSrc}.avif 2001w`,
+    png: ``,
+    webp: ``,
+    avif: ``,
   });
   const name = className || '';
   const handleSourceError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    // console.log(
-    //   'error',
-    //   e.currentTarget.currentSrc,
-    //   e.currentTarget.currentSrc.includes('-1024')
-    // );
     if (e.currentTarget.currentSrc.includes('-512')) {
       setSrcSet({
         png: `${imgSrc}-1024.png 1024w, ${imgSrc}.png 2001w`,
@@ -43,6 +46,33 @@ export const OptimizedImage = ({
       });
     }
   };
+
+  const handleSourceLoad = async () => {
+    const imgSet = { png: '', webp: '', avif: '' };
+    const resolutions = ['512', '1024', ''];
+    for (const res of resolutions) {
+      const suffix = res ? `-${res}` : '';
+      const size = res || '2001';
+
+      if (await checkImageExists(`${imgSrc}${suffix}.png`)) {
+        imgSet.png += `${imgSrc}${suffix}.png ${size}w, `;
+      }
+      if (webpSrc && (await checkImageExists(`${imgSrc}${suffix}.webp`))) {
+        imgSet.webp += `${imgSrc}${suffix}.webp ${size}w, `;
+      }
+      if (avifSrc && (await checkImageExists(`${imgSrc}${suffix}.avif`))) {
+        imgSet.avif += `${imgSrc}${suffix}.avif ${size}w, `;
+      }
+    }
+    setSrcSet({
+      png: imgSet.png.trim().replace(/, $/, ''),
+      webp: imgSet.webp.trim().replace(/, $/, ''),
+      avif: imgSet.avif.trim().replace(/, $/, ''),
+    });
+  };
+  useEffect(() => {
+    handleSourceLoad();
+  }, [imgSrc]);
 
   return (
     <picture>
