@@ -7,7 +7,8 @@ import {
   TwitterIcon,
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useDebounce } from '@/utils/hooks';
 
 export const FooterSection = () => {
   const [translateX, setTranslateX] = useState(window.innerWidth);
@@ -15,30 +16,17 @@ export const FooterSection = () => {
     /* Optional options */
     threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
   });
+  const handleScroll = () => {
+    console.log('handleScroll', inView);
+    if (!entry) return;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!entry) return;
+    const elementWidth = entry.boundingClientRect.width;
+    const currentTranslate =
+      elementWidth - entry.intersectionRatio * elementWidth;
+    setTranslateX(currentTranslate);
+  };
 
-      //console.log(' entry.intersectionRatio', entry.intersectionRatio);
-      const elementWidth = entry.boundingClientRect.width;
-      const currentTranslate =
-        elementWidth - entry.intersectionRatio * elementWidth;
-      setTranslateX(currentTranslate);
-    };
-
-    const optimizedScroll = () => {
-      requestAnimationFrame(handleScroll);
-    };
-
-    if (inView && entry) {
-      window.addEventListener('scroll', optimizedScroll);
-    } else {
-      setTranslateX(0);
-    }
-
-    return () => window.removeEventListener('scroll', optimizedScroll);
-  }, [entry, inView]);
+  useDebounce(handleScroll, 100, [entry]);
 
   return (
     <section className={css.footerSection}>
