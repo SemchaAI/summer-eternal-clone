@@ -86,10 +86,10 @@
 
 @font-face {
   font-family: 'DM Mono';
-  src: url('fonts/DMMono-Light.eot');
-  src: url('fonts/DMMono-Light.eot?#iefix') format('embedded-opentype'),
-    url('fonts/DMMono-Light.woff2') format('woff2'),
-    url('fonts/DMMono-Light.woff') format('woff');
+  src: url('/fonts/DMMono-Light.eot');
+  src: url('/fonts/DMMono-Light.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/DMMono-Light.woff2') format('woff2'),
+    url('/fonts/DMMono-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -97,10 +97,10 @@
 
 @font-face {
   font-family: 'DM Mono';
-  src: url('fonts/DMMono-Medium.eot');
-  src: url('fonts/DMMono-Medium.eot?#iefix') format('embedded-opentype'),
-    url('fonts/DMMono-Medium.woff2') format('woff2'),
-    url('fonts/DMMono-Medium.woff') format('woff');
+  src: url('/fonts/DMMono-Medium.eot');
+  src: url('/fonts/DMMono-Medium.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/DMMono-Medium.woff2') format('woff2'),
+    url('/fonts/DMMono-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -108,10 +108,10 @@
 
 @font-face {
   font-family: 'DM Mono';
-  src: url('fonts/DMMono-Regular.eot');
-  src: url('fonts/DMMono-Regular.eot?#iefix') format('embedded-opentype'),
-    url('fonts/DMMono-Regular.woff2') format('woff2'),
-    url('fonts/DMMono-Regular.woff') format('woff');
+  src: url('/fonts/DMMono-Regular.eot');
+  src: url('/fonts/DMMono-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/DMMono-Regular.woff2') format('woff2'),
+    url('/fonts/DMMono-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -119,10 +119,11 @@
 
 @font-face {
   font-family: 'Libre Baskerville';
-  src: url('fonts/LibreBaskerville-Bold.eot');
-  src: url('fonts/LibreBaskerville-Bold.eot?#iefix') format('embedded-opentype'),
-    url('fonts/LibreBaskerville-Bold.woff2') format('woff2'),
-    url('fonts/LibreBaskerville-Bold.woff') format('woff');
+  src: url('/fonts/LibreBaskerville-Bold.eot');
+  src: url('/fonts/LibreBaskerville-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/LibreBaskerville-Bold.woff2') format('woff2'),
+    url('/fonts/LibreBaskerville-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -130,11 +131,11 @@
 
 @font-face {
   font-family: 'Libre Baskerville';
-  src: url('fonts/LibreBaskerville-Regular.eot');
-  src: url('fonts/LibreBaskerville-Regular.eot?#iefix')
+  src: url('/fonts/LibreBaskerville-Regular.eot');
+  src: url('/fonts/LibreBaskerville-Regular.eot?#iefix')
       format('embedded-opentype'),
-    url('fonts/LibreBaskerville-Regular.woff2') format('woff2'),
-    url('fonts/LibreBaskerville-Regular.woff') format('woff');
+    url('/fonts/LibreBaskerville-Regular.woff2') format('woff2'),
+    url('/fonts/LibreBaskerville-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
