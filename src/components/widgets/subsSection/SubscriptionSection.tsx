@@ -28,20 +28,54 @@ export const SubscriptionSection = () => {
         ref={ref}
         className={css.subsTitles}
       >
-        <div className={`${css.titleContainer} ${inView ? 'slideInLeft' : ''}`}>
-          <h2 className={css.title}>Artistically driven.</h2>
+        <div
+          className={`${css.titleContainer} `} //${inView ? 'slideInLeft' : ''}
+        >
+          <h2
+            style={{
+              transform: `${inView ? 'translateX(0)' : 'translateX(-100%)'}`,
+            }}
+            className={css.title}
+          >
+            Artistically driven.
+          </h2>
         </div>
         <div
-          className={`${css.titleContainer} ${inView ? 'slideInRight' : ''}`}
+          className={`${css.titleContainer}`} // ${inView ? 'slideInRight' : ''}
         >
-          <h2 className={css.title}>Creative led.</h2>
+          <h2
+            style={{
+              transform: `${inView ? 'translateX(0)' : 'translateX(100%)'}`,
+            }}
+            className={css.title}
+          >
+            Creative led.
+          </h2>
         </div>
         <div className={css.titleContainer}>
-          <div className={` ${inView ? 'slideInLeft' : ''}`}>
-            <h2 className={css.title}> Worker</h2>
+          <div
+
+          // className={` ${inView ? 'slideInLeft' : ''}`}
+          >
+            <h2
+              style={{
+                transform: `${inView ? 'translateX(0)' : 'translateX(-100%)'}`,
+              }}
+              className={css.title}
+            >
+              Worker
+            </h2>
           </div>
-          <div className={` ${inView ? 'slideInRight' : ''}`}>
-            <h2 className={css.title}>*and* player owned.</h2>
+          <div //className={` ${inView ? 'slideInRight' : ''}`}
+          >
+            <h2
+              style={{
+                transform: `${inView ? 'translateX(0)' : 'translateX(100%)'}`,
+              }}
+              className={css.title}
+            >
+              *and* player owned.
+            </h2>
           </div>
         </div>
       </div>

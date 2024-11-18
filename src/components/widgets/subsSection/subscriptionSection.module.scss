@@ -40,7 +40,11 @@
   white-space: pre;
 
   justify-content: flex-start;
-  will-change: transform;
+
+  & h2 {
+    will-change: transform;
+    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
 }
 
 .title {
